@@ -19,13 +19,14 @@ export default function AboutSection() {
           <div className="relative">
             <div
               className="w-full bg-stone-300 overflow-hidden relative"
-              style={{ aspectRatio: "3/4", maxWidth: "480px" }}
+              style={{ aspectRatio: "4/5", maxWidth: "480px" }}
             >
               <Image
                 src="/images/mitchell.jpg"
                 alt={SITE_CONFIG.agentName}
                 fill
-                className="object-cover object-top"
+                className="object-cover"
+                style={{ objectPosition: "50% 8%", transform: "scale(1.15)", transformOrigin: "top center" }}
                 sizes="(max-width: 768px) 100vw, 480px"
                 priority
               />
@@ -53,7 +54,7 @@ export default function AboutSection() {
 
             {/* Bio */}
             <div className="space-y-4 font-sans text-stone-500 leading-relaxed text-[15px] lg:text-left max-w-xl">
-              <p>As a Mammoth Lakes native, I grew up with the Eastern Sierra as my backyard—and that sense of place has shaped everything about how I approach real estate. After earning my degree with honors from USC's Marshall School of Business, I brought that same drive and attention to detail into the industry, earning my license in 2022.</p>
+              <p>As a Mammoth Lakes native, I grew up with the Eastern Sierra as my backyard—and that sense of place has shaped everything about how I approach real estate. After earning my degree with honors from USC's Marshall School of Business in 2026, I brought that same drive and attention to detail into the industry, earning my license in 2022.</p>
               <p>Whether I'm on the mountain snowboarding, hiking a new trail, catching a wave, or traveling somewhere new, I'm always drawn back to the people and places that make a community feel like home. That perspective—of someone who genuinely loves where they live—is what I bring to every client relationship.</p>
               <p>Real estate isn't just about finding a property. It's about finding your place in the world, and I'm here to help make that happen.</p>
             </div>
