@@ -74,7 +74,7 @@ export default function AddressAutocomplete({
   }
 
   return (
-    <div ref={wrapperRef} className="relative w-full">
+    <div ref={wrapperRef} className="relative w-full h-full">
       <input
         type="text"
         value={value}

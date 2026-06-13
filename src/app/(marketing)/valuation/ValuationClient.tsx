@@ -111,13 +111,15 @@ export default function ValuationClient() {
               <div className="flex items-center pl-5 text-stone-400 shrink-0">
                 <PinIcon />
               </div>
-              <AddressAutocomplete
-                value={address}
-                onChange={setAddress}
-                onSelect={(val) => { setAddress(val); }}
-                placeholder="Enter your home address..."
-                inputClassName="flex-1 h-full px-4 font-sans text-sm text-charcoal placeholder:text-stone-400 focus:outline-none bg-transparent"
-              />
+              <div className="flex-1 min-w-0 h-full">
+                <AddressAutocomplete
+                  value={address}
+                  onChange={setAddress}
+                  onSelect={(val) => { setAddress(val); }}
+                  placeholder="Enter your home address..."
+                  inputClassName="w-full h-full px-4 font-sans text-sm text-charcoal placeholder:text-stone-400 focus:outline-none bg-transparent"
+                />
+              </div>
               <button
                 type="submit"
                 className="h-full px-8 font-sans text-xs font-semibold tracking-[0.2em] uppercase text-charcoal border-l border-stone-200 hover:bg-[var(--color-gold)] hover:text-white hover:border-[var(--color-gold)] transition-all duration-300 whitespace-nowrap shrink-0"
