@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { SITE_CONFIG } from "@/lib/constants";
+import AddressAutocomplete from "@/components/ui/AddressAutocomplete";
 
 const CheckIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -97,21 +98,20 @@ export default function ValuationClient() {
 
           {/* Search bar */}
           <form onSubmit={handleSearch} className="w-full max-w-3xl">
-            <div className="flex items-stretch bg-white" style={{ height: "64px" }}>
-              <div className="flex items-center pl-5 text-stone-400">
+            <div className="flex items-stretch bg-white relative" style={{ height: "64px" }}>
+              <div className="flex items-center pl-5 text-stone-400 shrink-0">
                 <PinIcon />
               </div>
-              <input
-                ref={inputRef}
-                type="text"
+              <AddressAutocomplete
                 value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                onChange={setAddress}
+                onSelect={(val) => { setAddress(val); }}
                 placeholder="Enter your home address..."
-                className="flex-1 h-full px-4 font-sans text-sm text-charcoal placeholder:text-stone-400 focus:outline-none"
+                inputClassName="flex-1 h-full px-4 font-sans text-sm text-charcoal placeholder:text-stone-400 focus:outline-none bg-transparent"
               />
               <button
                 type="submit"
-                className="h-full px-8 font-sans text-xs font-semibold tracking-[0.2em] uppercase text-charcoal border-l border-stone-200 hover:bg-[var(--color-gold)] hover:text-white hover:border-[var(--color-gold)] transition-all duration-300 whitespace-nowrap"
+                className="h-full px-8 font-sans text-xs font-semibold tracking-[0.2em] uppercase text-charcoal border-l border-stone-200 hover:bg-[var(--color-gold)] hover:text-white hover:border-[var(--color-gold)] transition-all duration-300 whitespace-nowrap shrink-0"
               >
                 Get a Free Home Valuation
               </button>
