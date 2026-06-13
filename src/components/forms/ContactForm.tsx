@@ -65,6 +65,19 @@ export default function ContactForm() {
         />
       </div>
 
+      <div className="flex items-start gap-3">
+        <input
+          type="checkbox"
+          required
+          id="consent-light"
+          className="mt-0.5 accent-[var(--color-gold)] cursor-pointer shrink-0"
+        />
+        <label htmlFor="consent-light" className="text-xs font-sans text-stone-400 leading-relaxed cursor-pointer">
+          I agree to be contacted by Mitchell Parsons via call, email, and text for real estate services. To opt out, you can reply 'stop' at any time or reply 'help' for assistance. You can also click the unsubscribe link in the emails. Message and data rates may apply. Message frequency may vary.{" "}
+          <a href="https://shawn-abrahamian.luxrerealty.com/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="underline hover:text-charcoal transition-colors duration-200">Privacy Policy</a>.
+        </label>
+      </div>
+
       {state.status === "error" && (
         <p className="text-sm font-sans text-red-500">{state.message}</p>
       )}
