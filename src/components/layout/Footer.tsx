@@ -33,7 +33,7 @@ export default function Footer() {
               {SITE_CONFIG.agentName}
             </p>
             <p className="font-sans text-xs text-white/40 tracking-[0.15em] uppercase mt-1">
-              {SITE_CONFIG.agentTitle} · {SITE_CONFIG.brokerageLicense}
+              {SITE_CONFIG.brokerageLicense}
             </p>
           </div>
 
@@ -73,7 +73,7 @@ export default function Footer() {
             alt="LUXRE Realty"
             width={100}
             height={34}
-            className="object-contain opacity-70"
+            className="object-contain opacity-90"
           />
 
           {/* Disclaimer */}
