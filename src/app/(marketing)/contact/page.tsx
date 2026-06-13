@@ -4,7 +4,10 @@ import Link from "next/link";
 import ContactFormDark from "@/components/forms/ContactFormDark";
 import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Mitchell Parsons at LUXRE Realty. Call, email, or submit a message to discuss buying, selling, or home valuation.",
+};
 
 const FacebookIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

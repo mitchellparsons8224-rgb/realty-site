@@ -1,30 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const LISTINGS = [
-  {
-    id: 1,
-    image: "/images/listing-1.jpg",
-    status: "Active",
-    address: "1212 S El Camino Real",
-    city: "San Clemente, CA",
-    beds: 4,
-    baths: 3,
-    price: "$1,000,000",
-  },
-  {
-    id: 2,
-    image: "/images/listing-2.jpg",
-    status: "Active",
-    address: "Address Coming Soon",
-    city: "San Clemente, CA",
-    beds: null,
-    baths: null,
-    price: null,
-  },
-];
+import { LISTINGS } from "@/data/listings";
 
 export default function FeaturedListings() {
+  const featured = LISTINGS.filter((l) => l.status === "active");
+
   return (
     <section id="properties" style={{ backgroundColor: "var(--color-charcoal)" }}>
       <div className="container-site py-24 lg:py-36">
@@ -54,7 +34,7 @@ export default function FeaturedListings() {
 
         {/* Cards */}
         <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
-          {LISTINGS.map((listing) => (
+          {featured.map((listing) => (
             <Link key={listing.id} href="/listings" className="group block">
               <div className="overflow-hidden relative" style={{ aspectRatio: "4/3" }}>
                 <Image
@@ -64,18 +44,16 @@ export default function FeaturedListings() {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, 50vw"
                 />
-                {/* Status badge */}
                 <div className="absolute top-4 left-4">
                   <span
                     className="font-sans text-xs font-medium tracking-widest uppercase px-3 py-1.5"
                     style={{ backgroundColor: "var(--color-gold)", color: "var(--color-charcoal)" }}
                   >
-                    {listing.status}
+                    For Sale
                   </span>
                 </div>
               </div>
 
-              {/* Card info */}
               <div className="pt-5 pb-6 border-b border-white/10">
                 <p className="font-serif text-white text-lg font-light group-hover:text-[var(--color-gold)] transition-colors duration-300">
                   {listing.address}

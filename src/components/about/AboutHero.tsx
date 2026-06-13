@@ -12,6 +12,7 @@ export default function AboutHero() {
         muted
         loop
         playsInline
+        preload="auto"
       />
 
       {/* Dark overlay */}

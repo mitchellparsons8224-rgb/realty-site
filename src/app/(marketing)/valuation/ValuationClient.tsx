@@ -208,7 +208,7 @@ export default function ValuationClient() {
 
                   <p className="font-sans text-xs text-stone-400 leading-relaxed pt-1">
                     I agree to be contacted by {SITE_CONFIG.agentName} via call, email, and text for real estate services. To opt out, you can reply 'stop' at any time or reply 'help' for assistance. Message and data rates may apply. Message frequency may vary.{" "}
-                    <a href="https://shawn-abrahamian.luxrerealty.com/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="underline hover:text-charcoal transition-colors duration-200">Privacy Policy</a>.
+                    <a href="/privacy" className="underline hover:text-charcoal transition-colors duration-200">Privacy Policy</a>.
                   </p>
 
                   {submitError && (

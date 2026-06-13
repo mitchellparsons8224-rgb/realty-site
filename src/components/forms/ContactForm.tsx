@@ -28,23 +28,23 @@ export default function ContactForm() {
     <form action={action} className="space-y-8">
       <div className="grid sm:grid-cols-2 gap-8">
         <div>
-          <label className="label-accent block mb-3">Name *</label>
-          <input name="name" type="text" required placeholder="Your full name" className={inputClass} />
+          <label htmlFor="cf-name" className="label-accent block mb-3">Name *</label>
+          <input id="cf-name" name="name" type="text" required placeholder="Your full name" className={inputClass} />
         </div>
         <div>
-          <label className="label-accent block mb-3">Email *</label>
-          <input name="email" type="email" required placeholder="your@email.com" className={inputClass} />
+          <label htmlFor="cf-email" className="label-accent block mb-3">Email *</label>
+          <input id="cf-email" name="email" type="email" required placeholder="your@email.com" className={inputClass} />
         </div>
       </div>
 
       <div className="grid sm:grid-cols-2 gap-8">
         <div>
-          <label className="label-accent block mb-3">Phone</label>
-          <input name="phone" type="tel" placeholder="(555) 000-0000" className={inputClass} />
+          <label htmlFor="cf-phone" className="label-accent block mb-3">Phone</label>
+          <input id="cf-phone" name="phone" type="tel" placeholder="(555) 000-0000" className={inputClass} />
         </div>
         <div>
-          <label className="label-accent block mb-3">I'm Interested In</label>
-          <select name="interest" className={cn(inputClass, "cursor-pointer")}>
+          <label htmlFor="cf-interest" className="label-accent block mb-3">I'm Interested In</label>
+          <select id="cf-interest" name="interest" className={cn(inputClass, "cursor-pointer")}>
             <option value="">Select one...</option>
             <option value="Buying a home">Buying a home</option>
             <option value="Selling my home">Selling my home</option>
@@ -55,8 +55,9 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="label-accent block mb-3">Message *</label>
+        <label htmlFor="cf-message" className="label-accent block mb-3">Message *</label>
         <textarea
+          id="cf-message"
           name="message"
           required
           rows={5}
@@ -74,12 +75,12 @@ export default function ContactForm() {
         />
         <label htmlFor="consent-light" className="text-xs font-sans text-stone-400 leading-relaxed cursor-pointer">
           I agree to be contacted by Mitchell Parsons via call, email, and text for real estate services. To opt out, you can reply 'stop' at any time or reply 'help' for assistance. You can also click the unsubscribe link in the emails. Message and data rates may apply. Message frequency may vary.{" "}
-          <a href="https://shawn-abrahamian.luxrerealty.com/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="underline hover:text-charcoal transition-colors duration-200">Privacy Policy</a>.
+          <a href="/privacy" className="underline hover:text-charcoal transition-colors duration-200">Privacy Policy</a>.
         </label>
       </div>
 
       {state.status === "error" && (
-        <p className="text-sm font-sans text-red-500">{state.message}</p>
+        <p className="text-sm font-sans text-red-400">{state.message}</p>
       )}
 
       <button

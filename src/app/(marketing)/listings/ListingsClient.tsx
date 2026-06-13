@@ -3,19 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import AddressAutocomplete from "@/components/ui/AddressAutocomplete";
-
-type Listing = {
-  id: number;
-  image: string;
-  status: string;
-  address: string;
-  city: string;
-  beds: number | null;
-  baths: number | null;
-  sqft: number | null;
-  price: string | null;
-  priceNum: number;
-};
+import type { Listing } from "@/data/listings";
 
 type Filters = {
   status: "active" | "sold" | "all";

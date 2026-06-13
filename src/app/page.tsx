@@ -3,7 +3,6 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
 import AboutSection from "@/components/about/AboutSection";
 import FeaturedListings from "@/components/home/FeaturedListings";
-import Link from "next/link";
 
 export default function HomePage() {
   return (
