@@ -52,9 +52,11 @@ export default function AboutSection() {
             </div>
 
             {/* Bio */}
-            <p className="font-sans text-stone-500 leading-relaxed text-[15px] text-center lg:text-left max-w-xl">
-              [Replace with your bio — who you are, your market expertise, and what drives you to deliver exceptional results for every client.]
-            </p>
+            <div className="space-y-4 font-sans text-stone-500 leading-relaxed text-[15px] lg:text-left max-w-xl">
+              <p>As a Mammoth Lakes native, I grew up with the Eastern Sierra as my backyard—and that sense of place has shaped everything about how I approach real estate. After earning my degree with honors from USC's Marshall School of Business, I brought that same drive and attention to detail into the industry, earning my license in 2022.</p>
+              <p>Whether I'm on the mountain snowboarding, hiking a new trail, catching a wave, or traveling somewhere new, I'm always drawn back to the people and places that make a community feel like home. That perspective—of someone who genuinely loves where they live—is what I bring to every client relationship.</p>
+              <p>Real estate isn't just about finding a property. It's about finding your place in the world, and I'm here to help make that happen.</p>
+            </div>
 
             {/* Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-8 border-y border-stone-200">

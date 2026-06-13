@@ -52,10 +52,13 @@ export default function ContactPage() {
 
         {/* LUXRE logo */}
         <div className="mb-16">
-          {/* Logo placeholder — drop luxre-logo.png into /public/images/ and uncomment:
-          <Image src="/images/luxre-logo.png" alt="LUXRE Realty" width={180} height={60} className="object-contain" />
-          */}
-          <p className="font-serif text-white/50 text-xs tracking-[0.3em] uppercase">LUXRE Realty</p>
+          <Image
+            src="/images/luxre-logo.png"
+            alt="LUXRE Realty"
+            width={160}
+            height={54}
+            className="object-contain"
+          />
         </div>
 
         {/* Two-column layout with vertical divider */}
