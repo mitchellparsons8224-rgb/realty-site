@@ -6,11 +6,11 @@ const LISTINGS = [
     id: 1,
     image: "/images/listing-1.jpg",
     status: "Active",
-    address: "Address Coming Soon",
+    address: "1212 S El Camino Real",
     city: "San Clemente, CA",
-    beds: null,
-    baths: null,
-    price: null,
+    beds: 4,
+    baths: 3,
+    price: "$1,000,000",
   },
   {
     id: 2,
@@ -81,10 +81,19 @@ export default function FeaturedListings() {
                   {listing.address}
                 </p>
                 <p className="font-sans text-white/40 text-sm tracking-wide mt-1">{listing.city}</p>
-                {listing.price && (
-                  <p className="font-sans text-white/70 text-sm tracking-widest uppercase mt-3">
-                    {listing.price}
-                  </p>
+                {(listing.beds || listing.price) && (
+                  <div className="flex items-center gap-6 mt-3">
+                    {listing.beds && (
+                      <span className="font-sans text-white/50 text-xs tracking-widest uppercase">
+                        {listing.beds} Bed · {listing.baths} Bath
+                      </span>
+                    )}
+                    {listing.price && (
+                      <span className="font-sans text-white/70 text-sm tracking-widest uppercase">
+                        {listing.price}
+                      </span>
+                    )}
+                  </div>
                 )}
               </div>
             </Link>
