@@ -1,98 +1,94 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import ListingsClient from "./ListingsClient";
 
 export const metadata: Metadata = { title: "Properties" };
 
-const LISTINGS = [
+export const LISTINGS = [
   {
     id: 1,
     image: "/images/listing-1.jpg",
-    status: "Active",
+    status: "For Sale",
     address: "1212 S El Camino Real",
     city: "San Clemente, CA",
     beds: 4,
     baths: 3,
+    sqft: null,
     price: "$1,000,000",
+    priceNum: 1000000,
   },
   {
     id: 2,
     image: "/images/listing-2.jpg",
-    status: "Active",
+    status: "For Sale",
     address: "Address Coming Soon",
     city: "San Clemente, CA",
     beds: null,
     baths: null,
+    sqft: null,
     price: null,
+    priceNum: 0,
   },
 ];
 
 export default function ListingsPage() {
   return (
-    <main className="min-h-screen" style={{ backgroundColor: "var(--color-cream)" }}>
-      <div className="container-site py-40">
+    <main style={{ backgroundColor: "var(--color-cream)" }}>
 
-        {/* Header */}
-        <div className="mb-16">
-          <p className="label-accent mb-4" style={{ color: "var(--color-gold)" }}>Active</p>
-          <div className="flex items-center gap-5">
-            <div className="w-1 h-12" style={{ backgroundColor: "var(--color-gold)" }} />
-            <h1
-              className="font-serif font-semibold text-charcoal uppercase tracking-[0.12em]"
-              style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)" }}
+      {/* Hero with search */}
+      <section className="relative h-72 md:h-96 w-full overflow-hidden">
+        <Image
+          src="/images/contact-bg.jpg"
+          alt="Properties"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(to bottom, rgba(10,15,25,0.55) 0%, rgba(10,15,25,0.75) 100%)" }}
+        />
+
+        {/* Search bar + filters */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 px-4">
+          {/* Search input */}
+          <div className="w-full max-w-2xl flex items-center bg-white" style={{ height: "52px" }}>
+            <input
+              type="text"
+              placeholder="Search by address, city, community, zip..."
+              className="flex-1 h-full px-5 font-sans text-sm text-charcoal placeholder:text-stone-400 focus:outline-none"
+            />
+            <button
+              className="h-full px-5 flex items-center justify-center transition-opacity hover:opacity-80"
+              style={{ backgroundColor: "var(--color-charcoal)" }}
+              aria-label="Search"
             >
-              Properties
-            </h1>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Filter strip */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {["Active Listings", "0+ Beds", "0+ Baths", "Price", "High → Low"].map((label, i) => (
+              <button
+                key={label}
+                className="font-sans text-xs font-medium tracking-widest uppercase text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-1.5"
+              >
+                {i > 0 && i < 3 && (
+                  <span className="text-white/30">|</span>
+                )}
+                {label}
+              </button>
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {LISTINGS.map((listing) => (
-            <div key={listing.id} className="group">
-              <div className="overflow-hidden relative bg-stone-200" style={{ aspectRatio: "4/3" }}>
-                <Image
-                  src={listing.image}
-                  alt={listing.address}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute top-4 left-4">
-                  <span
-                    className="font-sans text-xs font-medium tracking-widest uppercase px-3 py-1.5"
-                    style={{ backgroundColor: "var(--color-gold)", color: "var(--color-charcoal)" }}
-                  >
-                    {listing.status}
-                  </span>
-                </div>
-              </div>
+      {/* Listings grid */}
+      <ListingsClient listings={LISTINGS} />
 
-              <div className="pt-5 pb-6 border-b border-stone-200">
-                <p className="font-serif text-charcoal text-lg font-light">
-                  {listing.address}
-                </p>
-                <p className="font-sans text-stone-400 text-sm tracking-wide mt-1">{listing.city}</p>
-                {(listing.beds || listing.price) && (
-                  <div className="flex items-center gap-6 mt-3">
-                    {listing.beds && (
-                      <span className="font-sans text-stone-400 text-xs tracking-widest uppercase">
-                        {listing.beds} Bed · {listing.baths} Bath
-                      </span>
-                    )}
-                    {listing.price && (
-                      <span className="font-sans text-charcoal text-sm tracking-widest uppercase font-medium">
-                        {listing.price}
-                      </span>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-
-      </div>
     </main>
   );
 }
