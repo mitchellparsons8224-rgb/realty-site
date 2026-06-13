@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
   phone: "(760) 914-0231",
   email: "mitchellparsonsrealty@gmail.com",
   instagram: "https://instagram.com/mprealty",
-  linkedin: "https://linkedin.com/in/mitchellparsons",  // TODO: update with real LinkedIn URL
+  linkedin: "https://linkedin.com/in/mparsons04",
   siteUrl: "https://mitchellparsonsrealty.com",
   metaDescription:
     "Mitchell Parsons — Licensed real estate agent. Exceptional residential homes, expertly represented.",

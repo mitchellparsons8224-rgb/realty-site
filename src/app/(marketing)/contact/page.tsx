@@ -1,123 +1,141 @@
 import type { Metadata } from "next";
-import ContactForm from "@/components/forms/ContactForm";
+import Image from "next/image";
+import Link from "next/link";
+import ContactFormDark from "@/components/forms/ContactFormDark";
 import { SITE_CONFIG } from "@/lib/constants";
-import { Mail, Phone } from "lucide-react";
 
 export const metadata: Metadata = { title: "Contact" };
 
-const LinkedInIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+const FacebookIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
   </svg>
 );
 
 const InstagramIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
   </svg>
 );
 
-const contactLinks = [
-  {
-    icon: <Phone size={15} strokeWidth={1.5} />,
-    label: SITE_CONFIG.phone,
-    href: `tel:${SITE_CONFIG.phone}`,
-  },
-  {
-    icon: <Mail size={15} strokeWidth={1.5} />,
-    label: SITE_CONFIG.email,
-    href: `mailto:${SITE_CONFIG.email}`,
-  },
-  {
-    icon: <LinkedInIcon />,
-    label: "LinkedIn",
-    href: SITE_CONFIG.linkedin,
-    external: true,
-  },
-  {
-    icon: <InstagramIcon />,
-    label: "Instagram",
-    href: SITE_CONFIG.instagram,
-    external: true,
-  },
-];
+const LinkedInIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+    <rect x="2" y="9" width="4" height="12"/>
+    <circle cx="4" cy="4" r="2"/>
+  </svg>
+);
 
 export default function ContactPage() {
   return (
-    <main className="pt-24" style={{ backgroundColor: "var(--color-cream)" }}>
+    <main className="relative min-h-screen">
 
-      {/* Page header */}
-      <section
-        className="py-20"
-        style={{ backgroundColor: "var(--color-charcoal)" }}
-      >
-        <div className="container-site">
-          <div className="flex items-center gap-5 mb-6">
-            <div className="w-1 h-12" style={{ backgroundColor: "var(--color-gold)" }} />
-            <h1
-              className="font-serif font-semibold text-white uppercase tracking-[0.12em]"
-              style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)" }}
-            >
-              Contact
-            </h1>
-          </div>
-          <p className="font-sans text-stone-400 text-sm max-w-lg leading-relaxed">
-            Ready to buy, sell, or just explore your options? Reach out and I'll get back to you within one business day.
-          </p>
-        </div>
-      </section>
+      {/* Background image + overlay */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/contact-bg.jpg"
+          alt="Coastal background"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(135deg, rgba(10,15,25,0.88) 0%, rgba(15,25,40,0.80) 50%, rgba(10,15,25,0.88) 100%)" }}
+        />
+      </div>
 
       {/* Content */}
-      <section>
-        <div className="container-site py-24 lg:py-32">
-          <div className="grid lg:grid-cols-5 gap-16 lg:gap-24">
+      <div className="relative z-10 container-site min-h-screen flex flex-col justify-center py-32 pt-40">
 
-            {/* Left: contact info */}
-            <div className="lg:col-span-2 space-y-10">
+        {/* LUXRE logo */}
+        <div className="mb-16">
+          {/* Logo placeholder — drop luxre-logo.png into /public/images/ and uncomment:
+          <Image src="/images/luxre-logo.png" alt="LUXRE Realty" width={180} height={60} className="object-contain" />
+          */}
+          <p className="font-serif text-white/50 text-xs tracking-[0.3em] uppercase">LUXRE Realty</p>
+        </div>
 
+        {/* Two-column layout with vertical divider */}
+        <div className="grid lg:grid-cols-2 gap-0">
+
+          {/* Left: Contact Details */}
+          <div className="lg:pr-16 xl:pr-24 pb-16 lg:pb-0">
+            <h1
+              className="font-serif font-light text-white uppercase tracking-[0.15em] mb-12"
+              style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
+            >
+              Contact Details
+            </h1>
+
+            <div className="space-y-8">
               <div>
-                <p className="label-accent mb-6">Get In Touch</p>
-                <div className="space-y-4">
-                  {contactLinks.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      target={link.external ? "_blank" : undefined}
-                      rel={link.external ? "noopener noreferrer" : undefined}
-                      className="flex items-center gap-4 group transition-colors duration-300 hover:text-[var(--color-gold)]"
-                    >
-                      <div
-                        className="w-10 h-10 flex items-center justify-center border border-stone-200 text-charcoal group-hover:border-[var(--color-gold)] group-hover:text-[var(--color-gold)] transition-all duration-300"
-                      >
-                        {link.icon}
-                      </div>
-                      <span className="font-sans text-sm text-charcoal group-hover:text-[var(--color-gold)] transition-colors duration-300">
-                        {link.label}
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-8 border-t border-stone-200">
-                <p className="font-sans text-xs text-stone-400 leading-relaxed">
-                  {SITE_CONFIG.brokerageName}<br />
-                  {SITE_CONFIG.brokerageLicense}
+                <p className="text-xs font-sans tracking-[0.2em] uppercase text-white/40 mb-2">Brokerage</p>
+                <p className="font-sans text-white text-sm tracking-widest uppercase">
+                  {SITE_CONFIG.brokerageName} | {SITE_CONFIG.brokerageLicense}
                 </p>
               </div>
+
+              <div>
+                <p className="text-xs font-sans tracking-[0.2em] uppercase text-white/40 mb-2">Email</p>
+                <a
+                  href={`mailto:${SITE_CONFIG.email}`}
+                  className="font-sans text-white text-sm tracking-widest uppercase hover:text-[var(--color-gold)] transition-colors duration-300"
+                >
+                  {SITE_CONFIG.email}
+                </a>
+              </div>
+
+              <div>
+                <p className="text-xs font-sans tracking-[0.2em] uppercase text-white/40 mb-2">Phone</p>
+                <a
+                  href={`tel:${SITE_CONFIG.phone}`}
+                  className="font-sans text-white text-sm tracking-widest uppercase hover:text-[var(--color-gold)] transition-colors duration-300"
+                >
+                  {SITE_CONFIG.phone}
+                </a>
+              </div>
             </div>
 
-            {/* Right: form */}
-            <div className="lg:col-span-3">
-              <ContactForm />
+            {/* Social icons */}
+            <div className="flex items-center gap-4 mt-12">
+              {[
+                { icon: <FacebookIcon />, href: "#", label: "Facebook" },
+                { icon: <InstagramIcon />, href: SITE_CONFIG.instagram, label: "Instagram" },
+                { icon: <LinkedInIcon />, href: SITE_CONFIG.linkedin, label: "LinkedIn" },
+              ].map((social) => (
+                <Link
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-all duration-300"
+                >
+                  {social.icon}
+                </Link>
+              ))}
             </div>
-
           </div>
+
+          {/* Vertical divider */}
+          <div className="hidden lg:block absolute left-1/2 top-32 bottom-32 w-px bg-white/15" />
+
+          {/* Right: Form */}
+          <div className="lg:pl-16 xl:pl-24">
+            <h2
+              className="font-serif font-light text-white uppercase tracking-[0.15em] mb-12"
+              style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
+            >
+              Submit a Message
+            </h2>
+            <ContactFormDark />
+          </div>
+
         </div>
-      </section>
+      </div>
     </main>
   );
 }
