@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { SITE_CONFIG } from "@/lib/constants";
 import AddressAutocomplete from "@/components/ui/AddressAutocomplete";
+import { submitValuationRequest } from "@/app/actions/valuation";
 
 const CheckIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -36,13 +37,21 @@ export default function ValuationClient() {
     setModal("open");
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const next: Record<string, string> = {};
     if (!form.name.trim()) next.name = "Required";
     if (!form.phone.trim()) next.phone = "Required";
     if (!form.email.trim()) next.email = "Required";
     if (Object.keys(next).length) { setErrors(next); return; }
+    setSubmitting(true);
+    setSubmitError("");
+    const result = await submitValuationRequest(address, form.name, form.phone, form.email);
+    setSubmitting(false);
+    if (result.status === "error") { setSubmitError(result.message); return; }
     setModal("submitted");
   }
 
@@ -202,12 +211,17 @@ export default function ValuationClient() {
                     <a href="https://shawn-abrahamian.luxrerealty.com/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="underline hover:text-charcoal transition-colors duration-200">Privacy Policy</a>.
                   </p>
 
+                  {submitError && (
+                    <p className="text-xs text-red-400">{submitError}</p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full font-sans text-xs font-semibold tracking-[0.2em] uppercase text-white py-4 transition-opacity hover:opacity-90"
+                    disabled={submitting}
+                    className="w-full font-sans text-xs font-semibold tracking-[0.2em] uppercase text-white py-4 transition-opacity hover:opacity-90 disabled:opacity-50"
                     style={{ backgroundColor: "var(--color-charcoal)" }}
                   >
-                    Get My Valuation
+                    {submitting ? "Sending..." : "Get My Valuation"}
                   </button>
                 </form>
               </>
