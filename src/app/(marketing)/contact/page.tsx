@@ -71,13 +71,24 @@ export default function ContactPage() {
             </h1>
 
             <div className="space-y-8">
+
+              {/* Name + DRE */}
+              <p className="font-serif text-white tracking-[0.12em] uppercase" style={{ fontSize: "clamp(1rem, 1.8vw, 1.25rem)", fontWeight: 600 }}>
+                {SITE_CONFIG.agentName} | {SITE_CONFIG.brokerageLicense}
+              </p>
+
+              {/* Phone */}
               <div>
-                <p className="text-xs font-sans tracking-[0.2em] uppercase text-white/40 mb-2">Brokerage</p>
-                <p className="font-sans text-white text-sm tracking-widest uppercase">
-                  {SITE_CONFIG.brokerageName} | {SITE_CONFIG.brokerageLicense}
-                </p>
+                <p className="text-xs font-sans tracking-[0.2em] uppercase text-white/40 mb-2">Phone</p>
+                <a
+                  href={`tel:${SITE_CONFIG.phone}`}
+                  className="font-sans text-white text-sm tracking-widest uppercase hover:text-[var(--color-gold)] transition-colors duration-300"
+                >
+                  {SITE_CONFIG.phone}
+                </a>
               </div>
 
+              {/* Email */}
               <div>
                 <p className="text-xs font-sans tracking-[0.2em] uppercase text-white/40 mb-2">Email</p>
                 <a
@@ -88,15 +99,22 @@ export default function ContactPage() {
                 </a>
               </div>
 
-              <div>
-                <p className="text-xs font-sans tracking-[0.2em] uppercase text-white/40 mb-2">Phone</p>
-                <a
-                  href={`tel:${SITE_CONFIG.phone}`}
-                  className="font-sans text-white text-sm tracking-widest uppercase hover:text-[var(--color-gold)] transition-colors duration-300"
-                >
-                  {SITE_CONFIG.phone}
-                </a>
+              {/* Brokerage + office */}
+              <div className="pt-4 border-t border-white/10 space-y-4">
+                <p className="text-xs font-sans tracking-[0.2em] uppercase text-white/40">Brokerage</p>
+                <p className="font-sans text-white text-sm tracking-widest uppercase">
+                  {SITE_CONFIG.brokerageName}
+                </p>
+
+                <div>
+                  <p className="text-xs font-sans tracking-[0.2em] uppercase text-white/40 mb-2">San Clemente</p>
+                  <p className="font-sans text-white text-sm tracking-wide uppercase leading-relaxed">
+                    222 Avenida Del Mar<br />
+                    San Clemente, CA 92672
+                  </p>
+                </div>
               </div>
+
             </div>
 
             {/* Social icons */}
