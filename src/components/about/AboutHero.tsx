@@ -1,31 +1,18 @@
-import Image from "next/image";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export default function AboutHero() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
 
-      {/* Background — swap src for a real interior/property photo */}
-      <div className="absolute inset-0">
-        {/* TODO: replace gradient with a luxury interior photo:
-            1. Drop photo into /public/images/about-bg.jpg
-            2. Uncomment the Image tag below and remove the gradient div */}
-        {/*
-        <Image
-          src="/images/about-bg.jpg"
-          alt="Property interior"
-          fill
-          className="object-cover object-center"
-          priority
-        />
-        */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(160deg, #2a2520 0%, #1a1a1a 40%, #0f1419 100%)",
-          }}
-        />
-      </div>
+      {/* Background video */}
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        src="/videos/about-hero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
 
       {/* Dark overlay */}
       <div className="absolute inset-0" style={{ backgroundColor: "rgba(0,0,0,0.32)" }} />

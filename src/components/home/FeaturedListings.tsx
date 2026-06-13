@@ -34,7 +34,7 @@ export default function FeaturedListings() {
           <div className="flex items-center gap-5">
             <div className="w-1 h-12" style={{ backgroundColor: "var(--color-gold)" }} />
             <div>
-              <p className="label-accent mb-1" style={{ color: "var(--color-gold)" }}>Current</p>
+              <p className="label-accent mb-1" style={{ color: "var(--color-gold)" }}>Featured</p>
               <h2
                 className="font-serif font-semibold text-white uppercase tracking-[0.12em]"
                 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)" }}

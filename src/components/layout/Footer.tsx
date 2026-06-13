@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Phone, Mail } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 
 const RealtorIcon = () => (
@@ -41,15 +42,17 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-8">
             <a
               href={`tel:${SITE_CONFIG.phone}`}
-              className="font-sans text-sm text-white/60 hover:text-white transition-colors duration-300 tracking-wide"
+              className="flex items-center gap-2.5 font-sans text-sm text-white/60 hover:text-white transition-colors duration-300 tracking-wide"
             >
+              <Phone size={13} strokeWidth={1.5} style={{ color: "var(--color-gold)" }} />
               {SITE_CONFIG.phone}
             </a>
             <div className="hidden sm:block w-px h-4 bg-white/20" />
             <a
               href={`mailto:${SITE_CONFIG.email}`}
-              className="font-sans text-sm text-white/60 hover:text-white transition-colors duration-300 tracking-wide"
+              className="flex items-center gap-2.5 font-sans text-sm text-white/60 hover:text-white transition-colors duration-300 tracking-wide"
             >
+              <Mail size={13} strokeWidth={1.5} style={{ color: "var(--color-gold)" }} />
               {SITE_CONFIG.email}
             </a>
             <Link
