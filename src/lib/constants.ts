@@ -4,10 +4,11 @@ export const SITE_CONFIG = {
   agentTitle: "Licensed Real Estate Agent",
   brokerageName: "Your Brokerage Name",
   brokerageLicense: "CA DRE# 02193980",
-  phone: "(555) 000-0000",
-  email: "hello@mprealty.com",
-  instagramHandle: "@mprealty",
-  siteUrl: "https://mprealty.com",
+  phone: "(555) 000-0000",          // TODO: update with real number
+  email: "mitchell.parsons8224@gmail.com",
+  instagram: "https://instagram.com/mprealty",
+  linkedin: "https://linkedin.com/in/mitchellparsons",  // TODO: update with real URL
+  siteUrl: "https://mitchellparsonsrealty.com",
   metaDescription:
     "Mitchell Parsons — Licensed real estate agent. Exceptional residential homes, expertly represented.",
 } as const;
@@ -16,10 +17,6 @@ export const NAV_LEFT = [
   {
     label: "About",
     href: "/about",
-    children: [
-      { label: "My Story",     href: "/about" },
-      { label: "Track Record", href: "/about#track-record" },
-    ],
   },
   {
     label: "Properties",
@@ -33,5 +30,5 @@ export const NAV_LEFT = [
 
 export const NAV_RIGHT = [
   { label: "Home Valuation", href: "/valuation" },
-  { label: "Let's Connect",  href: "/contact" },
+  { label: "Contact",        href: "/contact" },
 ] as const;
