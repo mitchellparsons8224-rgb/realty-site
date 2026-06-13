@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SITE_CONFIG } from "@/lib/constants";
 
 const STATS = [
@@ -17,15 +18,16 @@ export default function AboutSection() {
           {/* Left: photo */}
           <div className="relative">
             <div
-              className="w-full bg-stone-300 overflow-hidden"
+              className="w-full bg-stone-300 overflow-hidden relative"
               style={{ aspectRatio: "3/4", maxWidth: "480px" }}
             >
-              {/* Replace src with your real headshot: /images/mitchell.jpg */}
-              <div
-                className="w-full h-full"
-                style={{
-                  background: "linear-gradient(160deg, #d6d3ce 0%, #b8b4ae 100%)",
-                }}
+              <Image
+                src="/images/mitchell.jpg"
+                alt={SITE_CONFIG.agentName}
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 480px"
+                priority
               />
             </div>
             {/* Decorative offset border */}

@@ -2,12 +2,12 @@ export const SITE_CONFIG = {
   agentName: "Mitchell Parsons",
   agentBrand: "MP Realty",
   agentTitle: "Licensed Real Estate Agent",
-  brokerageName: "Your Brokerage Name",
+  brokerageName: "LUXRE Realty",
   brokerageLicense: "CA DRE# 02193980",
-  phone: "(555) 000-0000",          // TODO: update with real number
-  email: "mitchell.parsons8224@gmail.com",
+  phone: "(760) 914-0231",
+  email: "mitchellparsonsrealty@gmail.com",
   instagram: "https://instagram.com/mprealty",
-  linkedin: "https://linkedin.com/in/mitchellparsons",  // TODO: update with real URL
+  linkedin: "https://linkedin.com/in/mitchellparsons",  // TODO: update with real LinkedIn URL
   siteUrl: "https://mitchellparsonsrealty.com",
   metaDescription:
     "Mitchell Parsons — Licensed real estate agent. Exceptional residential homes, expertly represented.",
