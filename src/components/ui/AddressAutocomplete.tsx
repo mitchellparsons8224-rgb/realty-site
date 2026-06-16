@@ -44,12 +44,19 @@ export default function AddressAutocomplete({
     debounce(async (query: string) => {
       if (query.trim().length < 3) { setSuggestions([]); setOpen(false); return; }
       try {
+        // Append Orange County context to bias results, then filter server-side
         const res = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&countrycodes=us&limit=6&addressdetails=1`,
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + ", Orange County, CA")}&countrycodes=us&limit=12&addressdetails=1`,
           { headers: { "Accept-Language": "en-US,en" } }
         );
-        const data: Array<{ display_name: string }> = await res.json();
-        const results = data.map((d) => d.display_name);
+        const data: Array<{ display_name: string; address?: { county?: string; state?: string } }> = await res.json();
+        const results = data
+          .filter((d) =>
+            d.address?.county === "Orange County" &&
+            d.address?.state === "California"
+          )
+          .slice(0, 6)
+          .map((d) => d.display_name);
         setSuggestions(results);
         setOpen(results.length > 0);
       } catch {
