@@ -2,8 +2,6 @@
 
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export type ValuationState = {
   status: "idle" | "success" | "error";
   message: string;
@@ -24,7 +22,9 @@ export async function submitValuationRequest(
   }
 
   try {
-    await resend.emails.send({
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    const { error } = await resend.emails.send({
       from: "Mitchell Parsons Realty <contact@mitchellparsonsrealty.com>",
       to: "mitchellparsonsrealty@gmail.com",
       replyTo: email,
@@ -33,7 +33,6 @@ export async function submitValuationRequest(
         <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; color: #1C1C1E;">
           <h2 style="font-weight: 300; font-size: 28px; margin-bottom: 8px;">Home Valuation Request</h2>
           <p style="color: #B8975A; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 32px;">mitchellparsonsrealty.com</p>
-
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 12px 0; border-bottom: 1px solid #e5e5e5; font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.1em; width: 120px;">Property</td>
@@ -52,7 +51,6 @@ export async function submitValuationRequest(
               <td style="padding: 12px 0; border-bottom: 1px solid #e5e5e5;">${email}</td>
             </tr>
           </table>
-
           <div style="margin-top: 32px; padding: 20px; background: #F9F6F1;">
             <p style="font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">Next Step</p>
             <p style="line-height: 1.7; color: #1C1C1E;">Prepare a comparative market analysis for the property above and follow up within one business day.</p>
@@ -61,8 +59,14 @@ export async function submitValuationRequest(
       `,
     });
 
+    if (error) {
+      console.error("Resend error:", error);
+      return { status: "error", message: "Something went wrong. Please email me directly at mitchellparsonsrealty@gmail.com." };
+    }
+
     return { status: "success", message: "Request received." };
-  } catch {
-    return { status: "error", message: "Something went wrong. Please try again." };
+  } catch (err) {
+    console.error("Valuation form error:", err);
+    return { status: "error", message: "Something went wrong. Please email me directly at mitchellparsonsrealty@gmail.com." };
   }
 }
