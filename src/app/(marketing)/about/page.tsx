@@ -4,7 +4,7 @@ import AboutSection from "@/components/about/AboutSection";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Mitchell Parsons — Mammoth Lakes native, USC Marshall graduate, and licensed real estate agent at LUXRE Realty in San Clemente, CA.",
+  description: "Mitchell Parsons — Eastern Sierra native, USC graduate, and licensed real estate agent at LUXRE Realty in San Clemente, CA. Bringing commercial and residential expertise to every transaction.",
 };
 
 export default function AboutPage() {

@@ -26,7 +26,7 @@ export default function AboutSection() {
                 alt={SITE_CONFIG.agentName}
                 fill
                 className="object-cover"
-                style={{ objectPosition: "50% 8%", transform: "scale(1.15)", transformOrigin: "top center" }}
+                style={{ objectPosition: "50% 15%", transform: "scale(1.05)", transformOrigin: "top center" }}
                 sizes="(max-width: 768px) 100vw, 480px"
                 priority
               />
@@ -53,10 +53,45 @@ export default function AboutSection() {
             </div>
 
             {/* Bio */}
-            <div className="space-y-4 font-sans text-stone-500 leading-relaxed text-[15px] lg:text-left max-w-xl">
-              <p>As a Mammoth Lakes native, I grew up with the Eastern Sierra as my backyard—and that sense of place has shaped everything about how I approach real estate. After earning my degree with honors from USC's Marshall School of Business in 2026, I brought that same drive and attention to detail into the industry, earning my license in 2022.</p>
-              <p>Whether I'm on the mountain snowboarding, hiking a new trail, catching a wave, or traveling somewhere new, I'm always drawn back to the people and places that make a community feel like home. That perspective—of someone who genuinely loves where they live—is what I bring to every client relationship.</p>
-              <p>Real estate isn't just about finding a property. It's about finding your place in the world, and I'm here to help make that happen.</p>
+            <div className="space-y-5 font-sans text-stone-500 leading-relaxed text-[15px] lg:text-left max-w-xl">
+              <p>
+                Born and raised in a small mountain town nestled in the Eastern Sierra Mountain range,
+                Mitchell brings a variety of experiences in the real estate industry. From commercial
+                acquisitions and asset management in big box industrial, to multifamily and creative
+                office, he is now settled in as a residential agent who provides a plethora of knowledge
+                that he brings to every transaction. Mitchell offers his clients a uniquely comprehensive
+                and seamless real estate experience.
+              </p>
+              <p>
+                After graduating from the University of Southern California where he earned a degree in
+                Business Administration (studying Real Estate Finance), Mitchell is left with strategic
+                marketing techniques and an analytical outlook to provide the absolute best opportunities
+                for clients.
+              </p>
+
+              {/* Pull quote */}
+              <blockquote
+                className="border-l-2 pl-5 py-1 font-serif font-light italic text-stone-600"
+                style={{ borderColor: "var(--color-gold)", fontSize: "clamp(1rem, 1.5vw, 1.1rem)", lineHeight: 1.7 }}
+              >
+                "What drew me to real estate wasn't the transaction side. It was the lifestyle side.
+                Being from the mountains, I know that where you live shapes how you live. That feeling
+                of walking into a place and knowing it's a fit. Being proud of where you wake up,
+                confident in the life you're living, genuinely happy with how your days unfold.
+                I wanted to help people find that."
+              </blockquote>
+
+              <p>
+                Today, Mitchell thrives as a real estate professional with a true love for "home." He
+                brings a friendly, personable, and persistent approach driven by a client-first
+                philosophy. Mitchell is dedicated to making each step of this life-changing process as
+                smooth and rewarding as possible.
+              </p>
+              <p>
+                When Mitchell isn't showing property or out in the community, he is enjoying life by
+                the beach in San Clemente, surfing, golfing, hiking, cooking, and spending time with
+                friends and family.
+              </p>
             </div>
 
             {/* Stats */}
