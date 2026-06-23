@@ -69,7 +69,7 @@ function Dropdown({
 
       {open && (
         <div
-          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white z-30 min-w-[170px] py-1 overflow-hidden"
+          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white z-50 min-w-[170px] py-1 overflow-hidden animate-dropdown-pop"
           style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.18)" }}
         >
           {options.map((opt) => {
@@ -86,6 +86,115 @@ function Dropdown({
               </button>
             );
           })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Segmented({
+  options,
+  value,
+  onChange,
+}: {
+  options: { label: string; value: number }[];
+  value: number;
+  onChange: (v: number) => void;
+}) {
+  return (
+    <div className="flex border border-stone-200">
+      {options.map((opt) => {
+        const active = opt.value === value;
+        return (
+          <button
+            key={opt.value}
+            onClick={() => onChange(opt.value)}
+            className="flex-1 px-3 py-2.5 font-sans text-xs font-medium tracking-widest uppercase border-l border-stone-200 first:border-l-0 bg-white hover:bg-stone-50 transition-colors duration-150"
+            style={{
+              backgroundColor: active ? "var(--color-gold)" : undefined,
+              color: active ? "white" : "var(--color-charcoal)",
+            }}
+          >
+            {opt.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function BedsBathsDropdown({
+  minBeds,
+  minBaths,
+  onBeds,
+  onBaths,
+}: {
+  minBeds: number;
+  minBaths: number;
+  onBeds: (v: number) => void;
+  onBaths: (v: number) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handle(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handle);
+    return () => document.removeEventListener("mousedown", handle);
+  }, []);
+
+  const bedsLabel = minBeds === 0 ? "Any" : `${minBeds}+`;
+  const bathsLabel = minBaths === 0 ? "Any" : `${minBaths}+`;
+  const label =
+    minBeds === 0 && minBaths === 0
+      ? "Beds & Baths"
+      : `${bedsLabel} Bd · ${bathsLabel} Ba`;
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="flex items-center gap-2 font-sans text-xs font-medium tracking-widest uppercase transition-all duration-200"
+        style={{
+          color: open ? "var(--color-gold)" : "rgba(255,255,255,0.75)",
+          outline: open ? "1px solid var(--color-gold)" : "1px solid transparent",
+          padding: "5px 10px",
+        }}
+      >
+        {label}
+        <ChevronIcon up={open} />
+      </button>
+
+      {open && (
+        <div
+          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white z-50 w-[360px] max-w-[90vw] p-5 animate-dropdown-pop"
+          style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.18)" }}
+        >
+          <p className="font-sans text-[10px] font-semibold tracking-[0.2em] uppercase text-stone-400 mb-2.5">
+            Bedrooms
+          </p>
+          <Segmented
+            value={minBeds}
+            onChange={onBeds}
+            options={[0, 1, 2, 3, 4, 5].map((n) => ({
+              label: n === 0 ? "Any" : `${n}+`,
+              value: n,
+            }))}
+          />
+
+          <p className="font-sans text-[10px] font-semibold tracking-[0.2em] uppercase text-stone-400 mt-5 mb-2.5">
+            Bathrooms
+          </p>
+          <Segmented
+            value={minBaths}
+            onChange={onBaths}
+            options={[0, 1, 2, 3, 4].map((n) => ({
+              label: n === 0 ? "Any" : `${n}+`,
+              value: n,
+            }))}
+          />
         </div>
       )}
     </div>
@@ -124,7 +233,7 @@ export default function ListingsClient({ listings }: { listings: Listing[] }) {
     <main style={{ backgroundColor: "var(--color-cream)" }}>
 
       {/* Hero */}
-      <section className="relative w-full overflow-hidden" style={{ height: "clamp(260px, 38vh, 420px)" }}>
+      <section className="relative w-full" style={{ height: "clamp(260px, 38vh, 420px)" }}>
         <Image
           src="/images/contact-bg.jpg"
           alt="Properties"
@@ -167,18 +276,11 @@ export default function ListingsClient({ listings }: { listings: Listing[] }) {
               ]}
             />
             <span className="text-white/20 text-xs select-none">|</span>
-            <Dropdown
-              label="0+ Beds"
-              value={filters.minBeds}
-              onChange={(v) => set("minBeds", v as number)}
-              options={[0,1,2,3,4,5].map((n) => ({ label: `${n}+ Beds`, value: n }))}
-            />
-            <span className="text-white/20 text-xs select-none">|</span>
-            <Dropdown
-              label="0+ Baths"
-              value={filters.minBaths}
-              onChange={(v) => set("minBaths", v as number)}
-              options={[0,1,2,3,4,5].map((n) => ({ label: `${n}+ Baths`, value: n }))}
+            <BedsBathsDropdown
+              minBeds={filters.minBeds}
+              minBaths={filters.minBaths}
+              onBeds={(v) => set("minBeds", v)}
+              onBaths={(v) => set("minBaths", v)}
             />
             <span className="text-white/20 text-xs select-none hidden sm:block">|</span>
             <Dropdown
