@@ -26,14 +26,7 @@ export default function AboutSection() {
                   sizes="(max-width: 768px) 100vw, 440px"
                   priority
                 />
-                {/* Subtle bottom fade so it blends into the section bg */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
-                  style={{ background: "linear-gradient(to top, #F5F4F1 0%, transparent 100%)" }}
-                />
               </div>
-
-              {/* Decorative offset border */}
               <div
                 className="absolute -bottom-3 -right-3 w-full pointer-events-none"
                 style={{
