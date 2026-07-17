@@ -60,7 +60,7 @@ export default function ValuationClient() {
       {/* Hero */}
       <section className="relative w-full overflow-hidden" style={{ minHeight: "92vh" }}>
         <Image
-          src="/images/valuation-bg.jpg"
+          src="/images/valuation-bg-v2.jpg"
           alt="Luxury home"
           fill
           className="object-cover object-center"
