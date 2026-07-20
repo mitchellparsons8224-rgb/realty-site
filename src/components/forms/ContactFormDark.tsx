@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const initialState: ContactFormState = { status: "idle", message: "" };
 
 const inputClass =
-  "w-full bg-transparent border-b border-white/30 py-3 text-sm font-sans text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors duration-300 uppercase tracking-widest";
+  "w-full bg-transparent border-b border-white/30 py-3 text-base sm:text-sm font-sans text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors duration-300 uppercase tracking-widest";
 
 export default function ContactFormDark() {
   const [state, action, pending] = useActionState(submitContactForm, initialState);

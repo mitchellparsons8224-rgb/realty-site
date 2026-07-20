@@ -2,7 +2,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 
 export default function AboutHero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-[100svh] w-full overflow-hidden">
 
       {/* Background video */}
       <video
